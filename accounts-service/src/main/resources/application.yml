@@ -38,3 +38,32 @@ spring:
   sql:
     init:
       mode: always
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+endpoints:
+  shutdown:
+    enabled: true
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+
+info:
+  app:
+    name: "accounts"
+    description: "PTDBank Accounts Application"
+    version: "1.0.0"
